@@ -1,4 +1,4 @@
-from typing import  List
+from typing import List
 import fastapi
 from fastapi import Depends, HTTPException
 from sqlalchemy.orm import Session
@@ -11,7 +11,9 @@ router = fastapi.APIRouter()
 
 
 @router.get("/users", response_model=List[User])
-async def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+async def read_users(
+    skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
+):
     users = get_users(db, skip=skip, limit=limit)
     return users
 
@@ -20,7 +22,10 @@ async def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_
 async def create_new_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = get_user_by_email(db=db, email=user.email)
     if db_user:
-        raise HTTPException(status_code=400, detail="Email is already registered")
+        raise HTTPException(
+            status_code=400,
+            detail="Email is already registered, try with diffrent email",
+        )
     return create_user(db=db, user=user)
 
 
