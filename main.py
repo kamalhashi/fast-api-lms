@@ -4,7 +4,6 @@ from db.models import user, course
 from db.db_setup import engine
 
 
-
 user.Base.metadata.create_all(bind=engine)
 course.Base.metadata.create_all(bind=engine)
 

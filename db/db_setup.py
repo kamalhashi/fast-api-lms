@@ -4,13 +4,15 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://kamal:kamal@localhost/fast_lms"
-ASYNC_SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://kamal:kamal@localhost/fast_lms"
-
-
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={}, future=True
+SQLALCHEMY_DATABASE_URL = (
+    "postgresql+psycopg2://kamal:kamal@localhost/fast_lms"
 )
+ASYNC_SQLALCHEMY_DATABASE_URL = (
+    "postgresql+asyncpg://kamal:kamal@localhost/fast_lms"
+)
+
+
+engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={}, future=True)
 
 async_engine = create_async_engine(ASYNC_SQLALCHEMY_DATABASE_URL)
 
@@ -25,6 +27,7 @@ AsyncSessionLocal = sessionmaker(
 )
 
 Base = declarative_base()
+
 
 # DB Utilities
 def get_db():

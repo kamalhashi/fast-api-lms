@@ -8,7 +8,7 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-    ...
+    pass
 
 
 class User(UserBase):

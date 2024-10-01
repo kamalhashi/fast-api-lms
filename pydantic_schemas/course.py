@@ -10,7 +10,7 @@ class CourseBase(BaseModel):
 
 
 class CourseCreate(CourseBase):
-    ...
+    pass
 
 
 class Course(CourseBase):
